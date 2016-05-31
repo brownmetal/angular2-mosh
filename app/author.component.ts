@@ -3,6 +3,7 @@ import { AuthorService } from './author.service';
 @Component({
     selector: 'author',
     template: `<h2>Authors</h2>
+                {{title}}
                <ul>
                     <li *ngFor="let author of authors">{{author}}</li>
                </ul>
@@ -11,6 +12,7 @@ import { AuthorService } from './author.service';
 })
 export class AuthorComponent {
     //authors:string[]=['Author1', 'Auhtor2', 'Author2'];
+    title="This is the section for Authors";
     authors;
     constructor(authorService: AuthorService) {
         this.authors=authorService.getAuthors();
