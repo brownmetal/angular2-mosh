@@ -1,4 +1,4 @@
-System.register(['@angular/core'], function(exports_1, context_1) {
+System.register(['@angular/core', './courses.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,25 +10,29 @@ System.register(['@angular/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, courses_service_1;
     var CoursesComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (courses_service_1_1) {
+                courses_service_1 = courses_service_1_1;
             }],
         execute: function() {
             CoursesComponent = (function () {
-                function CoursesComponent() {
+                function CoursesComponent(courseService) {
                     this.title = "This is the Courses Page";
-                    this.courses = ["Course 1", "Course 2", "Course 3"];
+                    this.courses = courseService.getCourses();
                 }
                 CoursesComponent = __decorate([
                     core_1.Component({
                         selector: 'courses',
-                        template: "\n                <h2>Courses Angular2</h2>\n                {{title}}\n                <br>\n                <ul>\n                    <li *ngFor=\"let course of courses\">{{course}}</li>\n                </ul>                \n                "
+                        template: "\n                <h2>Courses Angular2</h2>\n                {{title}}\n                <br>\n                <ul>\n                    <li *ngFor=\"let course of courses\">{{course}}</li>\n                </ul>                \n                ",
+                        providers: [courses_service_1.CoursesService]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [courses_service_1.CoursesService])
                 ], CoursesComponent);
                 return CoursesComponent;
             }());
