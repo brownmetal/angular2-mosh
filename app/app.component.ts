@@ -2,6 +2,8 @@
 import {Component} from '@angular/core';
 import { CoursesComponent } from './courses.component';
 import { AuthorComponent } from './author.component';
+import {StarComponent} from './star.component';
+
 @Component({
     selector: 'my-app',
     template: `<h1>Welcome to Angular2</h1><courses></courses><author></author>
@@ -11,8 +13,9 @@ import { AuthorComponent } from './author.component';
                 <input type="text" [(ngModel)] = "title" />
                 Preview: {{title}}
                 </div>
+                <star-fav></star-fav>
     `,
-    directives: [CoursesComponent, AuthorComponent]
+    directives: [CoursesComponent, AuthorComponent, StarComponent]
 })
 export class AppComponent {
     title="Angular with Mosh";
