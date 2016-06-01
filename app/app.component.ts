@@ -8,11 +8,14 @@ import { AuthorComponent } from './author.component';
                 <button class="btn btn-primary" [class.active]="isActive" [style.backgroundColor]="isActive ? 'blue':'red'">Submit</button>
                 <div (click)="onDivClick()">
                 <button class="btn btn-success" (click)="onClick($event)">Click Me</button>
+                <input type="text" [(ngModel)] = "title" />
+                Preview: {{title}}
                 </div>
     `,
     directives: [CoursesComponent, AuthorComponent]
 })
-export class AppComponent { 
+export class AppComponent {
+    title="Angular with Mosh";
     isActive=true;
     onDivClick(){
         console.log('Click propagated to the Div');
