@@ -26,12 +26,12 @@ System.register(['@angular/core', './courses.component', './author.component'], 
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
-                    this.isActive = false;
+                    this.isActive = true;
                 }
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "<h1>Welcome to Angular2</h1><courses></courses><author></author>\n                <button class=\"btn btn-primary\" [class.active]=\"isActive\">Submit</button>\n    ",
+                        template: "<h1>Welcome to Angular2</h1><courses></courses><author></author>\n                <button class=\"btn btn-primary\" [class.active]=\"isActive\" [style.backgroundColor]=\"isActive ? 'blue':'red'\">Submit</button>\n    ",
                         directives: [courses_component_1.CoursesComponent, author_component_1.AuthorComponent]
                     }), 
                     __metadata('design:paramtypes', [])
