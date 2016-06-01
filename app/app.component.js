@@ -28,13 +28,13 @@ System.register(['@angular/core', './courses.component', './author.component'], 
                 function AppComponent() {
                     this.isActive = true;
                 }
-                AppComponent.prototype.onClick = function () {
-                    console.log("Button Clicked!");
+                AppComponent.prototype.onClick = function ($event) {
+                    console.log("Button Clicked!", $event);
                 };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "<h1>Welcome to Angular2</h1><courses></courses><author></author>\n                <button class=\"btn btn-primary\" [class.active]=\"isActive\" [style.backgroundColor]=\"isActive ? 'blue':'red'\">Submit</button>\n                <button class=\"btn btn-success\" (click)=\"onClick()\">Click Me</button>\n    ",
+                        template: "<h1>Welcome to Angular2</h1><courses></courses><author></author>\n                <button class=\"btn btn-primary\" [class.active]=\"isActive\" [style.backgroundColor]=\"isActive ? 'blue':'red'\">Submit</button>\n                <button class=\"btn btn-success\" (click)=\"onClick($event)\">Click Me</button>\n    ",
                         directives: [courses_component_1.CoursesComponent, author_component_1.AuthorComponent]
                     }), 
                     __metadata('design:paramtypes', [])
