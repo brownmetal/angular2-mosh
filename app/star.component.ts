@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'star-fav',
@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
     `
 })
 export class StarComponent {
-    isFavourite=false;
+    @Input() isFavourite=true;
     onClick(){
-        this.isFavourite=!this.isFavourite;
+    this.isFavourite=!this.isFavourite;
     }
 }

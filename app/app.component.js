@@ -29,6 +29,10 @@ System.register(['@angular/core', './courses.component', './author.component', '
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
+                    this.post = {
+                        title: "Input Properties",
+                        isFavorite: true
+                    };
                     this.title = "Angular with Mosh";
                     this.isActive = true;
                 }
@@ -42,7 +46,7 @@ System.register(['@angular/core', './courses.component', './author.component', '
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "<h1>Welcome to Angular2</h1><courses></courses><author></author>\n                <button class=\"btn btn-primary\" [class.active]=\"isActive\" [style.backgroundColor]=\"isActive ? 'blue':'red'\">Submit</button>\n                <div (click)=\"onDivClick()\">\n                <button class=\"btn btn-success\" (click)=\"onClick($event)\">Click Me</button>\n                <input type=\"text\" [(ngModel)] = \"title\" />\n                Preview: {{title}}\n                </div>\n                <star-fav></star-fav>\n    ",
+                        template: "<h1>Welcome to Angular2</h1><courses></courses><author></author>\n                <button class=\"btn btn-primary\" [class.active]=\"isActive\" [style.backgroundColor]=\"isActive ? 'blue':'red'\">Submit</button>\n                <div (click)=\"onDivClick()\">\n                <button class=\"btn btn-success\" (click)=\"onClick($event)\">Click Me</button>\n                <input type=\"text\" [(ngModel)] = \"title\" />\n                Preview: {{title}}\n                </div>\n                <star-fav [isFavourite]=\"post.isFavorite\"></star-fav>\n    ",
                         directives: [courses_component_1.CoursesComponent, author_component_1.AuthorComponent, star_component_1.StarComponent]
                     }), 
                     __metadata('design:paramtypes', [])

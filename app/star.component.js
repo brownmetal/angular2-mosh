@@ -20,11 +20,15 @@ System.register(['@angular/core'], function(exports_1, context_1) {
         execute: function() {
             StarComponent = (function () {
                 function StarComponent() {
-                    this.isFavourite = false;
+                    this.isFavourite = true;
                 }
                 StarComponent.prototype.onClick = function () {
                     this.isFavourite = !this.isFavourite;
                 };
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', Object)
+                ], StarComponent.prototype, "isFavourite", void 0);
                 StarComponent = __decorate([
                     core_1.Component({
                         selector: 'star-fav',
