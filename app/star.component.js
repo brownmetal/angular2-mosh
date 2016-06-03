@@ -21,14 +21,22 @@ System.register(['@angular/core'], function(exports_1, context_1) {
             StarComponent = (function () {
                 function StarComponent() {
                     this.isFavourite = true;
+                    this.change = new core_1.EventEmitter();
                 }
                 StarComponent.prototype.onClick = function () {
                     this.isFavourite = !this.isFavourite;
+                    this.change.emit({
+                        changedValue: 'Sunil'
+                    });
                 };
                 __decorate([
                     core_1.Input(), 
                     __metadata('design:type', Object)
                 ], StarComponent.prototype, "isFavourite", void 0);
+                __decorate([
+                    core_1.Output(), 
+                    __metadata('design:type', Object)
+                ], StarComponent.prototype, "change", void 0);
                 StarComponent = __decorate([
                     core_1.Component({
                         selector: 'star-fav',

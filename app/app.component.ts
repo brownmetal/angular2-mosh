@@ -13,7 +13,7 @@ import {StarComponent} from './star.component';
                 <input type="text" [(ngModel)] = "title" />
                 Preview: {{title}}
                 </div>
-                <star-fav [isFavourite]="post.isFavorite"></star-fav>
+                <star-fav [isFavourite]="post.isFavorite" (change)="CompoChange($event)"></star-fav>
     `,
     directives: [CoursesComponent, AuthorComponent, StarComponent]
 })
@@ -21,6 +21,9 @@ export class AppComponent {
     post={
         title: "Input Properties",
         isFavorite: true
+    }
+    CompoChange($event){
+        console.log($event);
     }
     title="Angular with Mosh"; 
     isActive=true;
