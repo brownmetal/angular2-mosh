@@ -1,4 +1,4 @@
-System.register(['@angular/core', './courses.component', './author.component', './star.component'], function(exports_1, context_1) {
+System.register(['@angular/core', './courses.component', './author.component', './star.component', './twitterlike.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', './courses.component', './author.component', '
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, courses_component_1, author_component_1, star_component_1;
+    var core_1, courses_component_1, author_component_1, star_component_1, twitterlike_component_1;
     var AppComponent;
     return {
         setters:[
@@ -25,10 +25,17 @@ System.register(['@angular/core', './courses.component', './author.component', '
             },
             function (star_component_1_1) {
                 star_component_1 = star_component_1_1;
+            },
+            function (twitterlike_component_1_1) {
+                twitterlike_component_1 = twitterlike_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
+                    this.tweet = {
+                        totallikes: 10,
+                        ilikes: 0
+                    };
                     this.post = {
                         title: "Input Properties",
                         isFavorite: true
@@ -49,8 +56,8 @@ System.register(['@angular/core', './courses.component', './author.component', '
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n                <h1>Welcome to Angular2</h1>\n<courses></courses>\n<author></author>\n<button class=\"btn btn-primary\" [class.active]=\"isActive\" [style.backgroundColor]=\"isActive ? 'blue':'red'\">Submit</button>\n<div (click)=\"onDivClick()\">\n    <button class=\"btn btn-success\" (click)=\"onClick($event)\">Click Me</button>\n    <input type=\"text\" [(ngModel)]=\"title\" /> Preview: {{title}}\n</div>\n<star-fav [isFavourite]=\"post.isFavorite\" (change)=\"CompoChange($event)\"></star-fav>\n    ",
-                        directives: [courses_component_1.CoursesComponent, author_component_1.AuthorComponent, star_component_1.StarComponent]
+                        template: "\n                <h1>Welcome to Angular2</h1>\n<courses></courses>\n<author></author>\n<button class=\"btn btn-primary\" [class.active]=\"isActive\" [style.backgroundColor]=\"isActive ? 'blue':'red'\">Submit</button>\n<div (click)=\"onDivClick()\">\n    <button class=\"btn btn-success\" (click)=\"onClick($event)\">Click Me</button>\n    <input type=\"text\" [(ngModel)]=\"title\" /> Preview: {{title}}\n</div>\n<star-fav [isFavourite]=\"post.isFavorite\" (change)=\"CompoChange($event)\"></star-fav>\n    <gl-heart [totalLikes]=\"tweet.totallikes\" [ilike]=\"tweet.ilikes\"></gl-heart>\n    ",
+                        directives: [courses_component_1.CoursesComponent, author_component_1.AuthorComponent, star_component_1.StarComponent, twitterlike_component_1.TwitterLike]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

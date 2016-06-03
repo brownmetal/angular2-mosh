@@ -10,8 +10,14 @@ import { AutoGrowDirective } from './auto-grow.directive';
                 <br>
                 <ul>
                     <li *ngFor="let course of courses">{{course}}</li>
-                </ul>                
+                </ul>
+                <i class="glyphicon glyphicon-star"></i>                
                 `,
+      styles:[`
+        .glyphicon-star{
+            color: green;
+        }
+    `],
     providers: [CoursesService],
     directives:[AutoGrowDirective]
 })

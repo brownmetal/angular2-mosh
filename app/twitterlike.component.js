@@ -11,44 +11,43 @@ System.register(['@angular/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var StarComponent;
+    var TwitterLike;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            StarComponent = (function () {
-                function StarComponent() {
-                    this.isFavourite = true;
-                    this.change = new core_1.EventEmitter();
+            TwitterLike = (function () {
+                function TwitterLike() {
+                    this.ilike = false;
+                    this.totalLikes = 0;
                 }
-                StarComponent.prototype.onClick = function () {
-                    this.isFavourite = !this.isFavourite;
-                    this.change.emit({
-                        changedValue: 'Sunil'
-                    });
+                TwitterLike.prototype.onClick = function () {
+                    console.log("clicked");
+                    this.ilike = !this.ilike;
+                    this.totalLikes += this.ilike ? 1 : -1;
                 };
                 __decorate([
                     core_1.Input(), 
                     __metadata('design:type', Object)
-                ], StarComponent.prototype, "isFavourite", void 0);
+                ], TwitterLike.prototype, "ilike", void 0);
                 __decorate([
-                    core_1.Output(), 
+                    core_1.Input(), 
                     __metadata('design:type', Object)
-                ], StarComponent.prototype, "change", void 0);
-                StarComponent = __decorate([
+                ], TwitterLike.prototype, "totalLikes", void 0);
+                TwitterLike = __decorate([
                     core_1.Component({
-                        selector: 'star-fav',
-                        templateUrl: 'app/star.template.html',
-                        styles: ["\n            .glyphicon-star{\n                color: orange;\n            }\n    "]
+                        selector: 'gl-heart',
+                        template: "\n            <i class=\"glyphicon glyphicon-heart\" (click)=\"onClick()\" [class.highlighted]=\"ilike\"></i>\n            <span>{{ totalLikes }}</span>\n    ",
+                        styles: ["      \n            .glyphicon-heart{\n                color:#ccc;\n                font-size:10em;\n                cursor: pointer;\n            }\n            .highlighted{\n                color:pink;\n            }\n    "]
                     }), 
                     __metadata('design:paramtypes', [])
-                ], StarComponent);
-                return StarComponent;
+                ], TwitterLike);
+                return TwitterLike;
             }());
-            exports_1("StarComponent", StarComponent);
+            exports_1("TwitterLike", TwitterLike);
         }
     }
 });
-//# sourceMappingURL=star.component.js.map
+//# sourceMappingURL=twitterlike.component.js.map

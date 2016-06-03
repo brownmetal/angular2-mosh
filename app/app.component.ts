@@ -3,7 +3,8 @@ import {Component} from '@angular/core';
 import { CoursesComponent } from './courses.component';
 import { AuthorComponent } from './author.component';
 import {StarComponent} from './star.component';
- 
+import { TwitterLike } from './twitterlike.component';
+
 @Component({
     selector: 'my-app',
     template: `
@@ -16,10 +17,15 @@ import {StarComponent} from './star.component';
     <input type="text" [(ngModel)]="title" /> Preview: {{title}}
 </div>
 <star-fav [isFavourite]="post.isFavorite" (change)="CompoChange($event)"></star-fav>
+    <gl-heart [totalLikes]="tweet.totallikes" [ilike]="tweet.ilikes"></gl-heart>
     `,
-    directives: [CoursesComponent, AuthorComponent, StarComponent]
+    directives: [CoursesComponent, AuthorComponent, StarComponent, TwitterLike]
 })
 export class AppComponent {
+    tweet={
+        totallikes:10,
+        ilikes:0
+    }
     post={
         title: "Input Properties",
         isFavorite: true
