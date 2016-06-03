@@ -40,7 +40,7 @@ System.register(['@angular/core'], function(exports_1, context_1) {
                 StarComponent = __decorate([
                     core_1.Component({
                         selector: 'star-fav',
-                        template: "\n                <i style=\"font-size:8em\" class=\"glyphicon\" [class.glyphicon-star]=\"isFavourite\" [class.glyphicon-star-empty]=\"!isFavourite\" (click)=\"onClick()\"></i> Star\n    "
+                        templateUrl: 'app/star.template.html'
                     }), 
                     __metadata('design:paramtypes', [])
                 ], StarComponent);
