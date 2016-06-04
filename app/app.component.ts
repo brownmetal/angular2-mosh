@@ -4,6 +4,7 @@ import { CoursesComponent } from './courses.component';
 import { AuthorComponent } from './author.component';
 import {StarComponent} from './star.component';
 import { TwitterLike } from './twitterlike.component';
+import { MyvoteComponent } from './vote.component';
 
 @Component({
     selector: 'my-app',
@@ -11,6 +12,10 @@ import { TwitterLike } from './twitterlike.component';
                 <h1>Welcome to Angular2</h1>
 <courses></courses>
 <author></author>
+<voter [total]="votesDB.totalVotes" [myVote]="votesDB.uservote" (vote)="voted($event)">
+
+</voter>
+
 <button class="btn btn-primary" [class.active]="isActive" [style.backgroundColor]="isActive ? 'blue':'red'">Submit</button>
 <div (click)="onDivClick()">
     <button class="btn btn-success" (click)="onClick($event)">Click Me</button>
@@ -18,10 +23,18 @@ import { TwitterLike } from './twitterlike.component';
 </div>
 <star-fav [isFavourite]="post.isFavorite" (change)="CompoChange($event)"></star-fav>
     <gl-heart [totalLikes]="tweet.totallikes" [ilike]="tweet.ilikes"></gl-heart>
+    
     `,
-    directives: [CoursesComponent, AuthorComponent, StarComponent, TwitterLike]
+    directives: [CoursesComponent, AuthorComponent, StarComponent, TwitterLike, MyvoteComponent]
 })
 export class AppComponent {
+    votesDB={
+        totalVotes:10,
+        uservote:0
+    }
+    voted($event){
+        console.log($event);
+    }
     tweet={
         totallikes:10,
         ilikes:0
