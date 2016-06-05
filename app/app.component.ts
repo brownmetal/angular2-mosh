@@ -7,6 +7,7 @@ import { TwitterLike } from './twitterlike.component';
 import { MyvoteComponent } from './vote.component';
 import {ngifComponent} from './ngif.component'
 import {SummaryPipe} from './course.pipe';
+import { BstrapPanelComponent } from './bootstrap.panel.component';
 @Component({
     selector: 'my-app',
     template: `<div *ngIf="hide">
@@ -62,7 +63,13 @@ import {SummaryPipe} from './course.pipe';
                 </button>
                 <h2>Elvis Operator handling null properties</h2>
                 Title: {{elvis.title}}
-                Assignee: {{elvis.task.assignee}}
+                Assignee: {{elvis.task?.assignee}}
+                <h2>ng-Content</h2>
+                <bs-panel [Paneltitle]="bs.title" [PanelConent]="bs.content" (changeVal)="getChange($event)">
+                <div class="heading">This is the heading using ng-content</div>
+                <div class="body">This content has been added using ng-content!</div>
+                </bs-panel>
+               
                 </div>
     `,
     styles:[`
@@ -71,16 +78,24 @@ import {SummaryPipe} from './course.pipe';
        } 
     
     `],
-    directives: [CoursesComponent, AuthorComponent, StarComponent, TwitterLike, MyvoteComponent, ngifComponent],
+    directives: [CoursesComponent, AuthorComponent, StarComponent, TwitterLike, MyvoteComponent, ngifComponent, BstrapPanelComponent],
     pipes:[SummaryPipe]
 })
 export class AppComponent {
+    
+    bs={
+        title: 'This is the title from App component',
+        content: 'This is the Content from App Component'
+    }
     elvis={
         title:'Programming Course',
         task:{
             assignee:null,
             Role: 'Testing'
         }
+    }
+    getChange($event){
+        console.log($event);
     }
     cansave=true;
     posts={
