@@ -6,6 +6,7 @@ import {StarComponent} from './star.component';
 import { TwitterLike } from './twitterlike.component';
 import { MyvoteComponent } from './vote.component';
 import {ngifComponent} from './ngif.component'
+import {SummaryPipe} from './course.pipe';
 @Component({
     selector: 'my-app',
     template: `<div *ngIf="hide">
@@ -47,18 +48,45 @@ import {ngifComponent} from './ngif.component'
                     Students: {{course.students | number}}<br>
                     Price: {{course.price | currency:'INR':true:'2.2-2'}}<br>
                     Release Date: {{course.releaseDate | date:'MMM yyyy'}}<br>
-                    course: {{course | json}}
+                    cousrse: {{course | json}}
+                </div>
+                <h2>Custom Pipes</h2>
+                <div class="bigfont">
+                Title:{{posts.title}}<br>
+                Summary:{{posts.content | summary : 20}}
+                <button class="button button-primary" 
+                [ngStyle]="{
+                   color : cansave ? 'green' : 'grey',
+                   backgroundColor: cansave ? 'blue' : red 
+                }">Save
+                </button>
+                <h2>Elvis Operator handling null properties</h2>
+                Title: {{elvis.title}}
+                Assignee: {{elvis.task.assignee}}
                 </div>
     `,
     styles:[`
        .bigfont{
-           font-size:2em;
+           font-size:1.5em;
        } 
     
     `],
-    directives: [CoursesComponent, AuthorComponent, StarComponent, TwitterLike, MyvoteComponent, ngifComponent]
+    directives: [CoursesComponent, AuthorComponent, StarComponent, TwitterLike, MyvoteComponent, ngifComponent],
+    pipes:[SummaryPipe]
 })
 export class AppComponent {
+    elvis={
+        title:'Programming Course',
+        task:{
+            assignee:null,
+            Role: 'Testing'
+        }
+    }
+    cansave=true;
+    posts={
+        title: 'Angular2 for Beginners',
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nec vero sum nescius esse utilitatem in historia, non modo voluptatem. Nemo igitur esse beatus potest.'
+    }
     courses=['course1', 'course2', 'course3']
     course={
         title: 'Angular 2 for Beginners',

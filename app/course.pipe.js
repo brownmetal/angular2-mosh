@@ -11,31 +11,35 @@ System.register(['@angular/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var ngifComponent;
+    var SummaryPipe;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            ngifComponent = (function () {
-                function ngifComponent() {
-                    this.courses = {
-                        length: 0,
-                        author: 'Sunil'
-                    };
+            SummaryPipe = (function () {
+                function SummaryPipe() {
                 }
-                ngifComponent = __decorate([
-                    core_1.Component({
-                        selector: 'ngifc',
-                        template: "{{courses.author}} Portfolio:\n                <div *ngIf=\"courses.length > 0\">\n                    {{courses.length}} courses found in your account!\n                </div>\n                <div *ngIf=\"courses.length ==0\">\n                    No courses found in your account.\n                </div>\n    "
-                    }), 
+                SummaryPipe.prototype.transform = function (value, args) {
+                    if (args === undefined) {
+                        return value;
+                    }
+                    if (value.length > args) {
+                        return value.substring(0, args) + "...";
+                    }
+                    else {
+                        return value;
+                    }
+                };
+                SummaryPipe = __decorate([
+                    core_1.Pipe({ name: 'summary' }), 
                     __metadata('design:paramtypes', [])
-                ], ngifComponent);
-                return ngifComponent;
+                ], SummaryPipe);
+                return SummaryPipe;
             }());
-            exports_1("ngifComponent", ngifComponent);
+            exports_1("SummaryPipe", SummaryPipe);
         }
     }
 });
-//# sourceMappingURL=ngif.component.js.map
+//# sourceMappingURL=course.pipe.js.map
